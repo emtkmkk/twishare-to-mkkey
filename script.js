@@ -1,4 +1,4 @@
-const result = window.confirm('Twitter へのシェアリンクを確認しました。この内容を Misskey.io にシェアしますか？(拡張機能 Twishare to io より)')
+const result = window.confirm('Twitter へのシェアリンクを確認しました。この内容を mkkey.net にシェアしますか？(拡張機能 Twishare to mkkey より)')
 
 if (result) {
 	let tw_url = new URL(window.location.href);
@@ -19,7 +19,7 @@ if (result) {
 		hashtags = params.get('hashtags');
 	}
 
-	let io_url = new URL("https://misskey.io/share");
+	let mkkey_url = new URL("https://mkkey.net/share");
 
 	if (text){
 		if (hashtags){
@@ -32,13 +32,13 @@ if (result) {
 		tagged_hashtags = ' #' + hashtags.replace(/\,/g, ' #');
 		share_text = encodeURIComponent(tagged_hashtags);
 	}
-	io_url.searchParams.set('text',share_text);
+	mkkey_url.searchParams.set('text',share_text);
 	
 	if (url) {
 		share_url = url;
-		io_url.searchParams.set('url',share_url);
+		mkkey_url.searchParams.set('url',share_url);
 	}
 	
 
-	location.href = io_url;
+	location.href = mkkey_url;
 }
